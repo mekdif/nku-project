@@ -7,8 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if current_user %>    
+    <ul class="nav navbar-nav">
+      <%= link_to "Sign out", sign_out_path, class: "btn btn-default navbar-btn"%>
+      <li><%= link_to "Team-by-Team Information", teams_path %></li>
+    </ul>
+<%else%>
+    <%= link_to "Sign up", new_user_path, class: "btn btn-default navbar-btn" %>
+    <%= link_to "Sign in", new_session_path, class: "btn btn-primary navbar-btn" %>
+<% end %>
 
-  <%= yield %>
+<% flash.each do |key, value| %>
+  <div class="flash <%= flash_class(key) %> push--top">
+  <%= value %>
+  </div>
+<% end %>
+
+<%= yield %>
 
 </body>
 </html>
