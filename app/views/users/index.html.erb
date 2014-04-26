@@ -1,0 +1,58 @@
+
+<div id = "yesterday" style="width: 300px;">
+<table class="table table-hover">
+	<th colspan="2" >Yesterdays Games</th>
+	
+	<% @yesterdays_games.each do |game| %>
+		
+		<% team = Team.find(game.team_id) %>
+	 	<% opponent = Team.find(game.opponent_id) %>
+		<tr data-link="<%= game_path(game) %>">			
+			<td><%=team.full_name%></td>
+			<td><%=opponent.full_name%></td>			
+		</tr>
+	<% end%>
+
+</table>  
+</div> 
+
+
+<div id = "today" style="width: 300px;">
+<table class="table table-hover table-background-white">
+	<th colspan="2" >Today Games</th>
+	
+	<% @today_games.each do |game| %>
+		
+		<% team = Team.find(game.team_id) %>
+	 	<% opponent = Team.find(game.opponent_id) %>	 
+		<tr>
+			<td><%=team.full_name%></td>
+			<td><%=opponent.full_name%></td>
+		</tr>
+		
+	<% end%>
+
+</table>  
+</div>
+
+
+
+<div id = "tomorrow" style="width: 300px;">
+<table class="table table-hover">
+	<th colspan="2" >Tomorrow Games</th>
+	
+	<% @tomorrow_games.each do |game| %>
+		
+		<% team = Team.find(game.team_id) %>
+	 	<% opponent = Team.find(game.opponent_id) %>
+	 
+		<tr>
+			<td><%=team.full_name%></td>
+			<td><%=opponent.full_name%></td>
+		</tr>
+		
+	<% end%>
+
+</table>  
+</div>  
+

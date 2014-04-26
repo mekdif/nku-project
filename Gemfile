@@ -26,3 +26,6 @@ group :production do
   gem 'pg'
   gem 'uglifier'
 end
+
+gem "jquery-rails"
+gem 'jquery-ui-rails'

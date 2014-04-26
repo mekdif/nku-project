@@ -1,0 +1,25 @@
+<h1> <%= @game["home_team"]["full_name"]%> Period Scores : </h1>
+<%= @game["home_period_scores"] %>
+<br>
+
+
+<h1> <%= @game["away_team"]["full_name"] %> Period Scores : </h1>
+<%= @game["away_period_scores"] %>
+<br>
+
+
+<h3> Batter Totals :</h3>
+<table class="table table-hover">
+
+	<th> Category </th>
+	<th> <%= @game["home_team"]["full_name"] %> </th>
+	<th> <%= @game["away_team"]["full_name"] %> </th>
+	<% @game["home_batter_totals"].each do |key, value| %> 
+	  <tr>
+	  		<td> <%= ( key.slice(0,1).capitalize + key.slice(1..-1) ).gsub( "_", " " ) %> </td>
+	  		<td> <%= value %> </td>
+	  		<td> <%= @game["away_batter_totals"][key] %>
+	  </tr>
+	<% end %>
+
+</table>

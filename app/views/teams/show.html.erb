@@ -1,4 +1,5 @@
-<div class="single-info-block">
+<div class= "container">
+<div class="1single-info-block">
   <div class="avatar" style='background-image: url(<%= @team.image_url %>)'></div>
   <h4><%= @team.full_name %></h4>
   <p><em>(<%= @team.abbreviation %>)</em></p>
@@ -7,3 +8,18 @@
   <p><%= @team.site_name %></p> 
   <p><%= @team.city %>,<%= @team.state %></p>       
 </div>
+</div>
+<br /><br />
+
+<h3>Games:</h3>
+
+<% @team_games.each do |game| %>
+	
+	<%= link_to game_path(game) do %>
+		<%= Team.find(game.opponent_id).full_name %>
+		<%= game.event_start_date %>
+		<div style="color:#0000FF"><%= game.team_event_result %></div>
+		<br /><br />
+	<% end %>
+
+<% end %>
