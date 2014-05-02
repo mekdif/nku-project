@@ -1,10 +1,10 @@
 <h1> <%= @game["home_team"]["full_name"]%> Period Scores : </h1>
-<%= @game["home_period_scores"] %>
+<%= @game["home_period_scores"] %>&nbsp;<strong><%= @home_sum %></strong>
 <br>
 
 
 <h1> <%= @game["away_team"]["full_name"] %> Period Scores : </h1>
-<%= @game["away_period_scores"] %>
+<%= @game["away_period_scores"] %>&nbsp;<strong><%= @away_sum %></strong>
 <br>
 
 
@@ -23,3 +23,32 @@
 	<% end %>
 
 </table>
+
+<%= form_for @comment do |f| %>  
+
+
+    <div class="form-group">                                                                                                                                                       
+      <strong><%= f.label :comment %> </strong>                                                                                                                         
+      <%= f.text_area :comment, class: 'form-control' %>                                                                                                                           
+    </div>                                                                                                                                                                         
+                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                                                                     
+<%= f.hidden_field :game_id , :value => params[:id]  %>                                                                                                                      
+    <%= f.submit class: 'btn btn-primary' %>   
+
+ <% end %>     
+
+<hr>
+<% unless @comments.empty? %>                                                                                                                                                      
+                                                                                                                                                                               
+    <h4><strong>Comments:</strong></h4> 
+    <hr>
+    <br>                                                                                                                                                                           
+    <% @comments.each do |comment|%>                                                                                                                                               
+<strong><%= User.find(comment.user_id).firstname %>&nbsp; , <%=comment.created_at.to_formatted_s(:short) %>&nbsp&nbsp:</strong> 
+    <em><%= comment.comment %></em>                                                                 
+    <br>                                                                                                                                                                           
+    <hr>                                                                                                                                                                           
+    <% end %>                                                                                                                                                                      
+                                                                                                                                                                                   
+<% end %>  

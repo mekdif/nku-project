@@ -6,6 +6,7 @@ NkuProject::Application.routes.draw do
   resources :games
   
   get "sign_out", to: "sessions#destroy"
+  post "comments", to: "games#comment"
   root to: "users#index"
   
 end

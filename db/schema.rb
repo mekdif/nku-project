@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407234500) do
+ActiveRecord::Schema.define(version: 20140502173609) do
+
+  create_table "comments", force: true do |t|
+    t.text     "comment"
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "games", force: true do |t|
     t.string   "event_id"
@@ -31,6 +39,24 @@ ActiveRecord::Schema.define(version: 20140407234500) do
     t.integer  "opponent_events_lost"
     t.integer  "opponent_id"
     t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "players", force: true do |t|
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "display_name"
+    t.string   "birthdate"
+    t.integer  "age"
+    t.string   "birthplace"
+    t.float    "height_in"
+    t.float    "height_cm"
+    t.float    "height_m"
+    t.string   "height_formatted"
+    t.float    "weight_lb"
+    t.float    "weight_kg"
+    t.string   "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

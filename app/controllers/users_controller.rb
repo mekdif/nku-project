@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   	
   	@tomorrow_games = Game.where(:event_start_date => Date.tomorrow)
   	
-  	debugger
+  	
   	
   end
   
