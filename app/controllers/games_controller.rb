@@ -15,13 +15,15 @@ class GamesController < ApplicationController
     @game["away_period_scores"].each {|e| @away_sum += e}
     
     
-    @comments = Comment.all
+    @comments = Comment.where(:game_id => params[:id])
 	end
   
   def comment
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.save
+    
+    redirect_to game_path(params["comment"][:game_id])
   end
   
   private
